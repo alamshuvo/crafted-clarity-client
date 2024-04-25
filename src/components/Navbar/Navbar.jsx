@@ -2,23 +2,20 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState("light");
-  useEffect(()=>{
-    localStorage.setItem("theme",theme);
-    const item =localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme",item);
-    
-    },[theme])
+  const [theme, setTheme] = useState("nord");
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const item = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", item);
+  }, [theme]);
 
-
-  const hadleTheme=(e)=>{
-    console.log(e.target.checked);
+  const hadleTheme = (e) => {
     if (e.target.checked) {
-        setTheme("nord")
-    }else{
-        setTheme("lemonade")
+      setTheme("lemonade");
+    } else {
+      setTheme("nord");
     }
-  }
+  };
   const navLinks = (
     <>
       <li>
@@ -81,7 +78,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[100] p-1 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[100] p-5 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
           </ul>
