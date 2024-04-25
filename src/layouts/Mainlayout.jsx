@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Home from "../pages/Home";
 import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 const Mainlayout = () => {
     return (
         <div className="font-roboto">
             <div>
-                <Home></Home>
+                <Navbar></Navbar>
             </div>
             <div>
                 <Outlet></Outlet>
