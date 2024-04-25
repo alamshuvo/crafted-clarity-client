@@ -69,13 +69,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[100] p-1 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
           </ul>
         </div>
         <div>
-          <button className="btn btn-ghost text-xl border bg-[#B3C8CF] p-2 hover:bg-[#BED7DC] hover:text-[#F1EEDC] rounded-md ">
+          <button className="btn btn-ghost md:text-xl border bg-[#B3C8CF] p-2 hover:bg-[#BED7DC] hover:text-[#F1EEDC] rounded-md ">
             Crafted-Clarity
           </button>
         </div>
