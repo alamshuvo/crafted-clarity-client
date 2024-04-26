@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const {user,loading}=useContext(AuthContext)
   const [theme, setTheme] = useState("light");
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -68,8 +70,8 @@ const Navbar = () => {
       </li>
     </>
   );
-  return (
-    <div className="navbar bg-[#BED7DC] dark:bg-[#F1EEDC]">
+  return loading ?( <div className="w-16 mx-auto text-red flex justify-center items-center h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>):
+   ( <div className="navbar bg-[#BED7DC] dark:bg-[#F1EEDC]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -93,6 +95,28 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[100] p-5 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
+            {user ? (
+              <div className="md:flex  ">
+                <Link>
+                  {" "}
+                  <button
+                    // onClick={handleSignOut}
+                    className="btn mr-3  hover:outline-1 "
+                  >
+                    LogOut
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="md:flex  ">
+                <Link to={"/login"}>
+                  {" "}
+                  <button className="btn hover:outline-1 ">
+                    Login
+                  </button>
+                </Link>
+              </div>
+            )}
           </ul>
         </div>
         <div>
@@ -104,10 +128,54 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu menu-horizontal px-1">
+          {navLinks}
+          
+          
+          </ul>
       </div>
-      <div className="navbar-end">
-        <Link to={"/login"}><button className="btn">Login</button></Link>
+      <div className="md:flex  navbar-end">
+        {user ? (
+          <div className="flex justify-center items-center gap-2">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar tooltip tooltip-left"
+              data-tip={user?.displayName || "User Name"}
+            >
+              <div className="w-12 rounded-full ">
+                <img
+                referrerPolicy="no-referrer"
+                  className="w-full"
+                  alt="user"
+                  src={
+                    user?.photoURL ||<p>user</p>
+                  }
+                />
+              </div>
+            </div>
+            <div className="md:flex ">
+              <Link>
+                {" "}
+                <button
+                  // onClick={handleSignOut}
+                  className="btn mr-3  hover:outline-1 "
+                >
+                  LogOut
+                </button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="md:flex  ">
+            <Link to={"/login"}>
+              {" "}
+              <button className="btn mr-3  hover:outline-1 ">
+                Login
+              </button>
+            </Link>
+          </div>
+        )}
         <div>
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
@@ -138,6 +206,7 @@ const Navbar = () => {
           </label>
         </div>
       </div>
+      
     </div>
   );
 };

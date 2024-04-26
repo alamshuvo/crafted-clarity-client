@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../components/AuthProvider/AuthProvider";
@@ -7,7 +7,10 @@ import { AuthContext } from "../components/AuthProvider/AuthProvider";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const {registerUser,error}=useContext(AuthContext)
+    const {registerUser,error,updateProfileUser}=useContext(AuthContext)
+    const navigate=useNavigate();
+    const location=useLocation();
+    const from =location?.state || "/";
    
     const handleRegister=(e)=>{
         e.preventDefault();
@@ -35,8 +38,8 @@ const Register = () => {
               })
           }
           registerUser(email,password)
-          .then(()=>{
-            // console.log(res.user);
+          .then((res)=>{
+            console.log(res.user);
             if (!error) {
                 Swal.fire({
                     icon: "success",
@@ -44,10 +47,18 @@ const Register = () => {
                     text: "User created sucessfully!",
                     footer: '<a href="#">Why do I have this issue?</a>'
                   });
-                
-              }
-
-          })
+                  updateProfileUser(name,photo)
+                  .then((res)=>{
+                     console.log(res);
+                  setTimeout(() => {
+                   window.location.reload()
+                     }, 1000);
+                   navigate(from);
+                  })
+            }
+            // from.reset()
+        })
+            
           .catch(error=>{
             // console.log(error)
             if (error) {
@@ -85,8 +96,9 @@ const Register = () => {
             <label htmlFor="username" className="self-start text-xs font-semibold">Photo URL</label>
             <input id="userPhoto" name="photo" type="text"  className="flex items-center h-12 px-4 mt-2 rounded text-[#E5DDC5] dark:text-gray-50 focus:outline-none focus:ring-2 focus:border-violet-400 focus:dark:border-violet-600 focus:ring-violet-400 focus:dark:ring-violet-600" />
             {/* password */}
+            <label htmlFor="username" className="self-start text-xs font-semibold">Password</label>
          <div className="relative w-full">
-         <label htmlFor="username" className="self-start text-xs font-semibold">Password</label>
+         
             <input id="userPassword" name="password" type={showPassword ? "text" : "password"} className="flex items-center h-12 px-4 mt-2 rounded text-[#E5DDC5] w-full dark:text-gray-50 focus:outline-none focus:ring-2 focus:border-violet-400 focus:dark:border-violet-600 focus:ring-violet-400 focus:dark:ring-violet-600" />
             <span onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? (

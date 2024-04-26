@@ -1,5 +1,5 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
-import { createContext,  useState } from "react";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { createContext,  useEffect,  useState } from "react";
 import auth from "../../Firebase/firebase.config";
 
 export const AuthContext=createContext(null);
@@ -19,11 +19,40 @@ const AuthProvider = ({children}) => {
     }
 
 
-// 
+// update profile user 
+const updateProfileUser=(name,img)=>{
+    return  updateProfile(auth.currentUser, {
+         displayName: name, 
+         photoURL: img,
+       }).then(() => {
+         // Profile updated!
+         // ...
+       }).catch((error) => {
+         // An error occurred
+         // ...
+       });
+ }
 
 
+
+//  Auth state change 
+useEffect(()=>{
+    const unSubcribe=   onAuthStateChanged(auth,curentUser=>{
+           setUser(curentUser);
+           setLoading(false);
+           setError(false)
+       })
+       return ()=>
+       {
+           unSubcribe();
+       }
+      },[])
   const allInfu={
     registerUser,
+    updateProfileUser,
+    user,
+    loading,
+    error
   }
     return (
         <div>
