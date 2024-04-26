@@ -1,7 +1,13 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../components/AuthProvider/AuthProvider";
 
 
 const Register = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const {registerUser,error}=useContext(AuthContext)
    
     const handleRegister=(e)=>{
         e.preventDefault();
@@ -10,6 +16,53 @@ const Register = () => {
         const email=form.email.value;
         const photo=form.photo.value;
         const password=form.password.value;
+   
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+        if (password.length<6) {
+            return Swal.fire({
+                title: 'Error!',
+                text: 'Your password must be atleast 6 char',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+          }
+          if (!passwordPattern.test(password)) {
+            return Swal.fire({
+                title: 'Error!',
+                text: 'password must have one lowercase and one uppercase letter atleast',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+          }
+          registerUser(email,password)
+          .then(()=>{
+            // console.log(res.user);
+            if (!error) {
+                Swal.fire({
+                    icon: "success",
+                    title: "WOW",
+                    text: "User created sucessfully!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                  });
+                
+              }
+
+          })
+          .catch(error=>{
+            // console.log(error)
+            if (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                  });
+                
+              }
+          })
+
+
+
     }
 
 
@@ -32,8 +85,17 @@ const Register = () => {
             <label htmlFor="username" className="self-start text-xs font-semibold">Photo URL</label>
             <input id="userPhoto" name="photo" type="text"  className="flex items-center h-12 px-4 mt-2 rounded text-[#E5DDC5] dark:text-gray-50 focus:outline-none focus:ring-2 focus:border-violet-400 focus:dark:border-violet-600 focus:ring-violet-400 focus:dark:ring-violet-600" />
             {/* password */}
-            <label htmlFor="username" className="self-start text-xs font-semibold">Password</label>
-            <input id="userPassword" name="password" type="text"  className="flex items-center h-12 px-4 mt-2 rounded text-[#E5DDC5] dark:text-gray-50 focus:outline-none focus:ring-2 focus:border-violet-400 focus:dark:border-violet-600 focus:ring-violet-400 focus:dark:ring-violet-600" />
+         <div className="relative w-full">
+         <label htmlFor="username" className="self-start text-xs font-semibold">Password</label>
+            <input id="userPassword" name="password" type={showPassword ? "text" : "password"} className="flex items-center h-12 px-4 mt-2 rounded text-[#E5DDC5] w-full dark:text-gray-50 focus:outline-none focus:ring-2 focus:border-violet-400 focus:dark:border-violet-600 focus:ring-violet-400 focus:dark:ring-violet-600" />
+            <span onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? (
+                  <FaEyeSlash className="text-xl text-red-300  absolute top-[50%] right-[10%]" />
+                ) : (
+                  <FaEye className="text-xl text-red-300  absolute top-[50%] right-[10%]" />
+                )}
+              </span>
+         </div>
 
 
 
