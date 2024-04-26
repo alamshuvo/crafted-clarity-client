@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const {signinWithGoogle,error}=useContext(AuthContext);
+    const navigate=useNavigate();
+    const location=useLocation();
+    const from =location?.state || "/"
+
  
 const handleLogin=(e)=>{
     e.preventDefault();
@@ -10,7 +18,27 @@ const handleLogin=(e)=>{
     
 
 }
+const handleGoogleRegister=()=>{
+ 
+    signinWithGoogle()
+    .then(res=>{
+        if (!error) {
+            Swal.fire({
+                icon: "success",
+                title: "WOW",
+                text: "User created sucessfully!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+        }
+        if (res.user) {
+            navigate(from)
+        }
+    })
+    .catch(error=>{
+        console.log(error);
+    })
 
+}
 
 
 
@@ -61,7 +89,7 @@ const handleLogin=(e)=>{
         <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
       </div>
       <div className="flex justify-center space-x-4">
-        <button aria-label="Log in with Google" className="p-3 rounded-sm">
+        <button onClick={handleGoogleRegister} aria-label="Log in with Google" className="p-3 rounded-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"

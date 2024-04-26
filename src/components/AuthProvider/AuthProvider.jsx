@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext,  useEffect,  useState } from "react";
 import auth from "../../Firebase/firebase.config";
 
@@ -33,6 +33,13 @@ const updateProfileUser=(name,img)=>{
        });
  }
 
+// google signin 
+const signinWithGoogle=()=>{
+   return signInWithPopup(auth,provider)
+}
+
+
+
 // Sign out 
 const signOutproile=()=>{
     setUser(null)
@@ -44,7 +51,7 @@ const signOutproile=()=>{
 
 //  Auth state change 
 useEffect(()=>{
-    const unSubcribe=   onAuthStateChanged(auth,curentUser=>{
+    const unSubcribe= onAuthStateChanged(auth,curentUser=>{
            setUser(curentUser);
            setLoading(false);
            setError(false)
@@ -54,13 +61,15 @@ useEffect(()=>{
            unSubcribe();
        }
       },[])
+
   const allInfu={
     registerUser,
     updateProfileUser,
     user,
     loading,
     error,
-    signOutproile
+    signOutproile,
+    signinWithGoogle
   }
     return (
         <div>

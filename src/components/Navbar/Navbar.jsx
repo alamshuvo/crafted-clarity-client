@@ -125,6 +125,12 @@ const Navbar = () => {
                     Login
                   </button>
                 </Link>
+                <Link to={"/register"}>
+                  {" "}
+                  <button className="btn hover:outline-1 ">
+                    Register
+                  </button>
+                </Link>
               </div>
             )}
           </ul>
@@ -164,7 +170,7 @@ const Navbar = () => {
                 />
               </div>
             </div>
-            <div className="md:flex ">
+            <div className="md:flex hidden ">
               <Link>
                 {" "}
                 <button
@@ -177,11 +183,17 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div className="md:flex  ">
+          <div className="md:flex hidden  ">
             <Link to={"/login"}>
               {" "}
               <button className="btn mr-3  hover:outline-1 ">
                 Login
+              </button>
+            </Link>
+            <Link to={"/register"}>
+              {" "}
+              <button className="btn mr-3  hover:outline-1 ">
+                Register
               </button>
             </Link>
           </div>
