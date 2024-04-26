@@ -39,7 +39,10 @@ const signinWithGoogle=()=>{
 }
 
 
-
+//  github signin
+const signInWithGithub=()=>{
+    return signInWithPopup(auth,githubProvider);
+}
 // Sign out 
 const signOutproile=()=>{
     setUser(null)
@@ -69,7 +72,8 @@ useEffect(()=>{
     loading,
     error,
     signOutproile,
-    signinWithGoogle
+    signinWithGoogle,
+    signInWithGithub
   }
     return (
         <div>
