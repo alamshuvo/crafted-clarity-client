@@ -4,7 +4,7 @@ import { AuthContext } from "../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const {signinWithGoogle,error,signInWithGithub}=useContext(AuthContext);
+    const {signinWithGoogle,error,signInWithGithub,loginUser}=useContext(AuthContext);
     const navigate=useNavigate();
     const location=useLocation();
     const from =location?.state || "/"
@@ -13,8 +13,26 @@ const Login = () => {
 const handleLogin=(e)=>{
     e.preventDefault();
     const form=e.target;
-    const name=form.name.value;
+    const email=form.email.value;
     const password=form.password.value;
+    loginUser(email,password)
+    .then(res=>{
+        console.log(res);
+        if (!error) {
+            Swal.fire({
+                icon: "success",
+                title: "WOW",
+                text: "User created sucessfully!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+        }
+        if (res.user) {
+            navigate(from)
+        }
+    })
+    .catch(error=>{
+        console.log(error);
+    })
     
 
 }
@@ -72,13 +90,13 @@ const handleGithubRegister=()=>{
             htmlFor="username"
             className="block text-[#F1EEDC] dark:text-[#F1EEDC]"
           >
-            Username
+            Useremail
           </label>
           <input
-            type="text"
-            name="name"
-            id="username"
-            placeholder="Username"
+            type="email"
+            name="email"
+            id="useremail"
+            placeholder="Useremail"
             className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-[#B3C8CF] dark:bg-gray-50 text-gray-100 dark:text-[#F1EEDC] focus:border-violet-400 focus:dark:border-violet-600"
           />
         </div>

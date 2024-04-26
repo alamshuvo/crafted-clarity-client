@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext,  useEffect,  useState } from "react";
 import auth from "../../Firebase/firebase.config";
 
@@ -33,6 +33,14 @@ const updateProfileUser=(name,img)=>{
        });
  }
 
+
+//  login with email and password 
+
+const loginUser=(email,password)=>{
+    setLoading(true);
+    setError(true)
+   return signInWithEmailAndPassword(auth, email, password)
+}
 // google signin 
 const signinWithGoogle=()=>{
    return signInWithPopup(auth,provider)
@@ -73,7 +81,8 @@ useEffect(()=>{
     error,
     signOutproile,
     signinWithGoogle,
-    signInWithGithub
+    signInWithGithub,
+    loginUser
   }
     return (
         <div>
