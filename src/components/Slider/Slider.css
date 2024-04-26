@@ -1,0 +1,38 @@
+
+.slide{
+    height: 80vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+.slide1{
+    background-image: url("https://i.ibb.co/FmGSm28/1968.jpg");
+    
+    
+}
+.slide2{
+    background-image: url('https://i.ibb.co/93BtTk6/2586.jpg');
+    
+}
+.slide3{
+    background-image: url('https://i.ibb.co/zS6Lx26/17648.jpg');
+    
+}
+.slide4{
+    background-image: url('https://i.ibb.co/TP924d6/arrangement-macrame-handmade-object.jpg');
+    
+}
+.slide5{
+    background-image: url('https://i.ibb.co/FBnm8fY/2148491119.jpg');
+    
+    
+}
+.slide6{
+    background-image: url('https://i.ibb.co/NFMyvMT/2149072894.jpg');
+    
+}

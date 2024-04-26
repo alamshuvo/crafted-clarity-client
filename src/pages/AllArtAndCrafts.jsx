@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 const AllArtAndCrafts = () => {
     return (
-        <div className="min-h-screen">
+        <div className="">
             <Helmet>
                 <title>
                  Crafted clarity | AllArtAndCrafts

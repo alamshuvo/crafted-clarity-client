@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import AllArtAndCrafts from "../pages/AllArtAndCrafts";
 import AddCraftItem from "../pages/AddCraftItem";
+import MyArtAndCraftList from "../pages/MyArtAndCraftList";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
             path:"/addCraftItem",
             element:<AddCraftItem></AddCraftItem>
+        },
+        {
+            path:"/myArtAndCraftList",
+            element:<MyArtAndCraftList></MyArtAndCraftList>
         }
       ]
     },

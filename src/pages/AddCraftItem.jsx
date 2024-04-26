@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 const AddCraftItem = () => {
     return (
-        <div className="min-h-screen">
+        <div className="">
             <Helmet>
                 <title>
                     Crafted Clarity | AddCraftItem
