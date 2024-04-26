@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 const Mainlayout = () => {
     return (
         <div className="font-roboto">
-            <div>
+            <div className="sticky z-[100] top-0 ">
                 <Navbar></Navbar>
             </div>
             <div className="min-h-screen">

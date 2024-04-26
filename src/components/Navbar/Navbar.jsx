@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState("nord");
+  const [theme, setTheme] = useState("light");
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const item = localStorage.getItem("theme");
@@ -11,9 +11,9 @@ const Navbar = () => {
 
   const hadleTheme = (e) => {
     if (e.target.checked) {
-      setTheme("lemonade");
+      setTheme("dark");
     } else {
-      setTheme("nord");
+      setTheme("light");
     }
   };
   const navLinks = (
@@ -69,7 +69,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-[#B3C8CF]">
+    <div className="navbar bg-[#BED7DC] dark:bg-[#F1EEDC]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -96,16 +96,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          <button className="btn btn-ghost md:text-xl border bg-[#B3C8CF] p-2 hover:bg-[#BED7DC] hover:text-[#F1EEDC] rounded-md ">
+         <Link to={"/"}>
+         <button className="btn btn-ghost md:text-xl border bg-[#B3C8CF] p-2 hover:bg-[#BED7DC] hover:text-[#F1EEDC] rounded-md ">
             Crafted-Clarity
           </button>
+         </Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link to={"/login"}><button className="btn">Login</button></Link>
         <div>
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
