@@ -1,15 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const {user,loading}=useContext(AuthContext)
+  const {user,loading,signOutproile}=useContext(AuthContext)
   const [theme, setTheme] = useState("light");
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const item = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", item);
   }, [theme]);
+  const handleSignOut=()=>{
+    signOutproile()
+    Swal.fire({
+      icon: "success",
+      title: "LogOut",
+      text: "User LogOut Sucessfully!",
+      footer: '<a href="#">Why do I have this issue?</a>'
+    });
+  }
 
   const hadleTheme = (e) => {
     if (e.target.checked) {
@@ -100,7 +110,7 @@ const Navbar = () => {
                 <Link>
                   {" "}
                   <button
-                    // onClick={handleSignOut}
+                    onClick={handleSignOut}
                     className="btn mr-3  hover:outline-1 "
                   >
                     LogOut
@@ -158,7 +168,7 @@ const Navbar = () => {
               <Link>
                 {" "}
                 <button
-                  // onClick={handleSignOut}
+                  onClick={handleSignOut}
                   className="btn mr-3  hover:outline-1 "
                 >
                   LogOut

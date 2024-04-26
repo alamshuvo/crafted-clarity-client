@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 import { createContext,  useEffect,  useState } from "react";
 import auth from "../../Firebase/firebase.config";
 
@@ -33,7 +33,14 @@ const updateProfileUser=(name,img)=>{
        });
  }
 
+// Sign out 
+const signOutproile=()=>{
+    setUser(null)
+    setError(true)
 
+     signOut(auth)
+   
+}
 
 //  Auth state change 
 useEffect(()=>{
@@ -52,7 +59,8 @@ useEffect(()=>{
     updateProfileUser,
     user,
     loading,
-    error
+    error,
+    signOutproile
   }
     return (
         <div>
