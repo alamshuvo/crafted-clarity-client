@@ -3,6 +3,7 @@ import Slider from "../components/Slider/Slider";
 import { Typewriter } from "react-simple-typewriter";
 import { useLoaderData } from "react-router-dom";
 import CraftItems from "../components/CraftItems/CraftItems";
+import MeetOurTeam from "../components/MeetOurTeam/MeetOurTeam";
 
 const Home = () => {
   const craftedData=useLoaderData()
@@ -59,6 +60,9 @@ const Home = () => {
       </div>
       <div className="mt-10 ">
       <CraftItems craftedData={craftedData}></CraftItems>
+      </div>
+      <div className="mt-10 mb-10">
+        <MeetOurTeam></MeetOurTeam>
       </div>
     </div>
   );
