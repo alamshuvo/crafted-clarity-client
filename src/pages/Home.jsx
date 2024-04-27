@@ -4,6 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { useLoaderData } from "react-router-dom";
 import CraftItems from "../components/CraftItems/CraftItems";
 import MeetOurTeam from "../components/MeetOurTeam/MeetOurTeam";
+import OurBigDeal from "../components/OurBigDeal/OurBigDeal";
 
 const Home = () => {
   const craftedData=useLoaderData()
@@ -63,6 +64,9 @@ const Home = () => {
       </div>
       <div className="mt-10 mb-10">
         <MeetOurTeam></MeetOurTeam>
+      </div>
+      <div className="mt-10 mb-10">
+        <OurBigDeal ></OurBigDeal>
       </div>
     </div>
   );
