@@ -2,24 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
-  const {user,loading,signOutproile}=useContext(AuthContext)
+  const { user, loading, signOutproile } = useContext(AuthContext);
+
   const [theme, setTheme] = useState("light");
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const item = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", item);
   }, [theme]);
-  const handleSignOut=()=>{
-    signOutproile()
+  const handleSignOut = () => {
+    signOutproile();
     Swal.fire({
       icon: "success",
       title: "LogOut",
       text: "User LogOut Sucessfully!",
-      footer: '<a href="#">Why do I have this issue?</a>'
+      footer: '<a href="#">Why do I have this issue?</a>',
     });
-  }
+  };
 
   const hadleTheme = (e) => {
     if (e.target.checked) {
@@ -80,8 +83,10 @@ const Navbar = () => {
       </li>
     </>
   );
-  return loading ?( <div className="w-16 mx-auto text-red flex justify-center items-center h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>):
-   ( <div className="navbar bg-[#BED7DC] dark:bg-[#F1EEDC]">
+  return loading ? (
+    <div className="w-16 mx-auto text-red flex justify-center items-center h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+  ) : (
+    <div className="navbar bg-[#BED7DC] dark:bg-[#F1EEDC]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -121,34 +126,26 @@ const Navbar = () => {
               <div className="md:flex  ">
                 <Link to={"/login"}>
                   {" "}
-                  <button className="btn hover:outline-1 ">
-                    Login
-                  </button>
+                  <button className="btn hover:outline-1 ">Login</button>
                 </Link>
                 <Link to={"/register"}>
                   {" "}
-                  <button className="btn hover:outline-1 ">
-                    Register
-                  </button>
+                  <button className="btn hover:outline-1 ">Register</button>
                 </Link>
               </div>
             )}
           </ul>
         </div>
         <div>
-         <Link to={"/"}>
-         <button className="btn btn-ghost md:text-xl border bg-[#B3C8CF] p-2 hover:bg-[#BED7DC] hover:text-[#F1EEDC] rounded-md ">
-            Crafted-Clarity
-          </button>
-         </Link>
+          <Link to={"/"}>
+            <button className="btn btn-ghost md:text-xl border bg-[#B3C8CF] p-2 hover:bg-[#BED7DC] hover:text-[#F1EEDC] rounded-md ">
+              Crafted-Clarity
+            </button>
+          </Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-          
-          
-          </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="md:flex  navbar-end">
         {user ? (
@@ -156,18 +153,19 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar tooltip tooltip-left"
-              data-tip={user?.displayName || "User Name"}
+              className="btn btn-ghost btn-circle avatar "
             >
               <div className="w-12 rounded-full ">
-                <img
-                referrerPolicy="no-referrer"
+              
+                <a id="clickable">  <img
+                  referrerPolicy="no-referrer"
                   className="w-full"
                   alt="user"
-                  src={
-                    user?.photoURL ||<p>user</p>
-                  }
-                />
+                  src={user?.photoURL || <p>user</p>}
+                /></a>
+                <Tooltip anchorSelect="#clickable" clickable>
+                  <button>{user?.displayName || "User Name"}</button>
+                </Tooltip>
               </div>
             </div>
             <div className="md:flex hidden ">
@@ -186,15 +184,11 @@ const Navbar = () => {
           <div className="md:flex hidden  ">
             <Link to={"/login"}>
               {" "}
-              <button className="btn mr-3  hover:outline-1 ">
-                Login
-              </button>
+              <button className="btn mr-3  hover:outline-1 ">Login</button>
             </Link>
             <Link to={"/register"}>
               {" "}
-              <button className="btn mr-3  hover:outline-1 ">
-                Register
-              </button>
+              <button className="btn mr-3  hover:outline-1 ">Register</button>
             </Link>
           </div>
         )}
@@ -228,7 +222,6 @@ const Navbar = () => {
           </label>
         </div>
       </div>
-      
     </div>
   );
 };
