@@ -164,12 +164,9 @@ const Navbar = () => {
                   src={user?.photoURL || <p>user</p>}
                 /></a>
                 <Tooltip anchorSelect="#clickable" clickable>
-                  <button>{user?.displayName || "User Name"}</button>
-                </Tooltip>
-              </div>
-            </div>
-            <div className="md:flex hidden ">
-              <Link>
+                <div className="flex flex-col p-4 gap-2">
+                <button>{user?.displayName || "User Name"}</button>
+                  <Link>
                 {" "}
                 <button
                   onClick={handleSignOut}
@@ -178,6 +175,12 @@ const Navbar = () => {
                   LogOut
                 </button>
               </Link>
+                </div>
+                </Tooltip>
+              </div>
+            </div>
+            <div className="md:flex hidden ">
+           
             </div>
           </div>
         ) : (
