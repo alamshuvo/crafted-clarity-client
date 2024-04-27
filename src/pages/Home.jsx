@@ -1,8 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import Slider from "../components/Slider/Slider";
 import { Typewriter } from "react-simple-typewriter";
+import { useLoaderData } from "react-router-dom";
+import CraftItems from "../components/CraftItems/CraftItems";
 
 const Home = () => {
+  const craftedData=useLoaderData()
+  console.log(craftedData);
     const handleType = (count, number) => {
         // access word count number
         // console.log(count)
@@ -52,6 +56,9 @@ const Home = () => {
             </span>
           </h1>
         </div>
+      </div>
+      <div className="mt-10 ">
+      <CraftItems craftedData={craftedData}></CraftItems>
       </div>
     </div>
   );
