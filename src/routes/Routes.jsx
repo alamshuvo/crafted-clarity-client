@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ViewDetails from "../pages/ViewDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import Update from "../pages/Update";
 
 const router = createBrowserRouter([
     {
@@ -47,11 +48,22 @@ const router = createBrowserRouter([
           element:<Register></Register>
         },
         {
-          path:"viewdetails/:id",
+          path:"/viewdetails/:id",
           element:<PrivateRoutes>
             <ViewDetails></ViewDetails>
           </PrivateRoutes>,
           loader:({params})=>fetch(`http://localhost:5000/craft/id/${params.id}`)
+        },
+        {
+          path:"/update/:id",
+          element:<PrivateRoutes>
+            <Update></Update>
+          </PrivateRoutes>,
+          loader:({params})=>fetch(`http://localhost:5000/craft/id/${params.id}`)
+          
+          // element:<PrivateRoutes>
+          //   <Update></Update>
+          // </PrivateRoutes>
         }
       ]
     },
