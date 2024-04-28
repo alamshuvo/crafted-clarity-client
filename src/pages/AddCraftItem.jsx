@@ -19,8 +19,9 @@ const AddCraftItem = () => {
    const description=form.description.value;
    const name=user?.displayName;
    const email=user?.email;
+   const uid=user?.uid;
    const craft={
-   photo,item,selectCategory,price,customization,rating,stockStatus,processing_time,description,name,email
+   photo,item,selectCategory,price,customization,rating,stockStatus,processing_time,description,name,email,uid
    };
   //  console.log(craft);
   // sent data to the server

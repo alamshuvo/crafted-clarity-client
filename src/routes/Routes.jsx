@@ -51,7 +51,7 @@ const router = createBrowserRouter([
           element:<PrivateRoutes>
             <ViewDetails></ViewDetails>
           </PrivateRoutes>,
-          loader:({params})=>fetch(`http://localhost:5000/craft/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/craft/id/${params.id}`)
         }
       ]
     },
