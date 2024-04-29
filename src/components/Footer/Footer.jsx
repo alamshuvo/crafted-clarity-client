@@ -56,7 +56,17 @@ const Footer = () => {
                 <a rel="noopener noreferrer" href="#">
                   Privacy
                 </a>
+             
               </li>
+              <li>   <a href="">
+                   +8801980640702
+                </a>
+               </li>
+               <li>
+              <a>
+                  iftakharalamshuvo@gmail.com
+                </a>
+               </li>
               <li>
                 <a rel="noopener noreferrer" href="#">
                   Terms of Service
