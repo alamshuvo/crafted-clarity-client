@@ -21,13 +21,16 @@ const MyArtAndCraftList = () => {
  
 
   useEffect(() => {
-    fetch(`http://localhost:5000/craft/email/${user?.email}`)
+    fetch(`http://localhost:5000/craft/uid/${user?.uid}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setDataa(data);
       });
   }, [user]);
+
+
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",

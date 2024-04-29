@@ -10,6 +10,7 @@ import Register from "../pages/Register";
 import ViewDetails from "../pages/ViewDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import Update from "../pages/Update";
+import SubcategoriesMatchData from "../pages/SubcategoriesMatchData";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
           // element:<PrivateRoutes>
           //   <Update></Update>
           // </PrivateRoutes>
+        },
+        {
+          path:"/craft/categories/:selectCategory",
+          element:<SubcategoriesMatchData></SubcategoriesMatchData>,
+          loader:({params})=>fetch(`http://localhost:5000/craft/categories/${params.selectCategory}`)
         }
       ]
     },

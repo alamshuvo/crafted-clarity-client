@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import CraftItems from "../components/CraftItems/CraftItems";
 import MeetOurTeam from "../components/MeetOurTeam/MeetOurTeam";
 import OurBigDeal from "../components/OurBigDeal/OurBigDeal";
+import ArtAndCraftCategories from "../components/ArtAndCraftCategories/ArtAndCraftCategories";
 
 const Home = () => {
   const craftedData=useLoaderData()
@@ -20,7 +21,7 @@ const Home = () => {
       }
     
   return (
-    <div className="min-h-screen mt-2">
+    <div className="min-h-screen mt-2 space-y-20">
       <Helmet>
         <title>crafted-clarity | Home</title>
       </Helmet>
@@ -61,6 +62,9 @@ const Home = () => {
       </div>
       <div className="mt-10 ">
       <CraftItems craftedData={craftedData}></CraftItems>
+      </div>
+      <div className="mt-10 mb-10">
+        <ArtAndCraftCategories></ArtAndCraftCategories>
       </div>
       <div className="mt-10 mb-10">
         <MeetOurTeam></MeetOurTeam>
