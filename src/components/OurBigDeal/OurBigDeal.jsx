@@ -84,7 +84,7 @@ const OurBigDeal = () => {
               </form>
             </div>
             <img
-              src="/public/a.jpg"
+              src="https://i.ibb.co/DMSbVYW/2150440622.jpg"
               alt=""
               className="object-cover w-full rounded-md xl:col-span-3 bg-gray-500 dark:bg-gray-500"
             />
