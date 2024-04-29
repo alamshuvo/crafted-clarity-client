@@ -36,7 +36,7 @@ const Update = () => {
     };
     //  console.log(craft);
     // sent data to the server
-    fetch(`http://localhost:5000/craft/id/${data._id}`, {
+    fetch(`https://crafted-clarity-server.vercel.app/craft/id/${data._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

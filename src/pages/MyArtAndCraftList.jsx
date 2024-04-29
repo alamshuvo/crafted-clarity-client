@@ -21,7 +21,7 @@ const MyArtAndCraftList = () => {
  
 
   useEffect(() => {
-    fetch(`http://localhost:5000/craft/uid/${user?.uid}`)
+    fetch(`https://crafted-clarity-server.vercel.app/craft/uid/${user?.uid}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -42,7 +42,7 @@ const MyArtAndCraftList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/craft/id/${id}`, {
+        fetch(`https://crafted-clarity-server.vercel.app/craft/id/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

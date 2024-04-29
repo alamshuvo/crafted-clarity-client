@@ -21,12 +21,12 @@ const router = createBrowserRouter([
         {
             path:"/",
             element:<Home></Home>,
-            loader:()=>fetch("http://localhost:5000/craft")
+            loader:()=>fetch("https://crafted-clarity-server.vercel.app/craft")
         },
         {
             path:"/allArtAndCrafts",
             element:<AllArtAndCrafts></AllArtAndCrafts>,
-            loader:()=>fetch("http://localhost:5000/craft")
+            loader:()=>fetch("https://crafted-clarity-server.vercel.app/craft")
         },
         {
             path:"/addCraftItem",
@@ -53,14 +53,14 @@ const router = createBrowserRouter([
           element:<PrivateRoutes>
             <ViewDetails></ViewDetails>
           </PrivateRoutes>,
-          loader:({params})=>fetch(`http://localhost:5000/craft/id/${params.id}`)
+          loader:({params})=>fetch(`https://crafted-clarity-server.vercel.app/craft/id/${params.id}`)
         },
         {
           path:"/update/:id",
           element:<PrivateRoutes>
             <Update></Update>
           </PrivateRoutes>,
-          loader:({params})=>fetch(`http://localhost:5000/craft/id/${params.id}`)
+          loader:({params})=>fetch(`https://crafted-clarity-server.vercel.app/craft/id/${params.id}`)
           
           // element:<PrivateRoutes>
           //   <Update></Update>
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
         {
           path:"/craft/categories/:selectCategory",
           element:<SubcategoriesMatchData></SubcategoriesMatchData>,
-          loader:({params})=>fetch(`http://localhost:5000/craft/categories/${params.selectCategory}`)
+          loader:({params})=>fetch(`https://crafted-clarity-server.vercel.app/craft/categories/${params.selectCategory}`)
         }
       ]
     },
