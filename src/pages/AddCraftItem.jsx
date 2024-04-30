@@ -57,7 +57,7 @@ const AddCraftItem = () => {
       <Helmet>
         <title>Crafted Clarity | AddCraftItem</title>
       </Helmet>
-      <div>
+      <div className="p-5">
         <form className="md:p-10" onSubmit={handleAddCraft}>
           <h1
             className="text-4xl mt-5 mb-4 font-bold text-center 

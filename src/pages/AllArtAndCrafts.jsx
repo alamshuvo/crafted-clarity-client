@@ -15,7 +15,8 @@ const AllArtAndCrafts = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>Sl</th>
+              <th >Sl</th>
+              <th>Photo</th>
               <th>item</th>
               <th>Price</th>
               <th>stockStatus</th>
@@ -25,14 +26,15 @@ const AllArtAndCrafts = () => {
           <tbody>
             {/* row 1 */}
       {
-         data.map((item,index)=><tr key={data._id}>
-            <th>{index+1}</th>
-            <td>{item.item}</td>
-            <td>{item.price}</td>
-            <td>{item.stockStatus}</td>
-            <td></td>
+         data.map((item,index)=><tr  key={data._id}>
+            <th className="bg-purple-200">{index+1}</th>
+            <td className="md:w-[20%]"><img src={item.photo} className="lg:w-[40%] " alt="" /></td>
+            <td className="bg-purple-200 md:w-[20%]">{item.item}</td>
+            <td className="md:w-[20%]">{item.price}</td>
+            <td className="md:w-[20%]">{item.stockStatus}</td>
+            <td className="md:w-[20%]"></td>
             <td>
-               <Link to={`/viewdetails/${item._id}`}> <button className="btn">View Details</button></Link>
+               <Link to={`/viewdetails/${item._id}`}> <button className="btn bg-blue-100">View Details</button></Link>
             </td>
           </tr>)
       }

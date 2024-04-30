@@ -82,9 +82,9 @@ const handleGithubRegister=()=>{
 
 
   return (
-    <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-[#B3C8CF] dark:bg-gray-50 text-gray-100 dark:text-[#E5DDC5]">
-      <h1 className="text-2xl font-bold text-center">Login</h1>
-      <form noValidate="" onSubmit={handleLogin} className="space-y-6">
+    <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl   dark:bg-gray-50 text-gray-100 dark:text-[#E5DDC5]">
+      <h1 className="text-2xl font-bold text-center text-purple-400">Login</h1>
+      <form noValidate="" onSubmit={handleLogin} className="space-y-6 p-5 bg-[#B3C8CF] rounded-lg">
         <div className="space-y-1 text-sm">
           <label
             htmlFor="username"
@@ -97,7 +97,7 @@ const handleGithubRegister=()=>{
             name="email"
             id="useremail"
             placeholder="Useremail"
-            className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-[#B3C8CF] dark:bg-gray-50 text-gray-100 dark:text-[#F1EEDC] focus:border-violet-400 focus:dark:border-violet-600"
+            className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-[#B3C8CF] dark:bg-gray-50 text-gray-100 dark:text-[#F1EEDC] focus:border-violet-400 focus:dark:border-violet-600 outline"
           />
         </div>
         <div className="space-y-1 text-sm">
@@ -112,7 +112,7 @@ const handleGithubRegister=()=>{
             name="password"
             id="password"
             placeholder="Password"
-            className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-[#B3C8CF] dark:bg-gray-50 text-gray-100 dark:text-[#E5DDC5] focus:border-violet-400 focus:dark:border-violet-600"
+            className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-[#B3C8CF] dark:bg-gray-50 text-gray-100 dark:text-[#E5DDC5] focus:border-violet-400 focus:dark:border-violet-600 outline"
           />
          
         </div>
@@ -120,14 +120,15 @@ const handleGithubRegister=()=>{
           Log in
         </button>
       </form>
-      <div className="flex items-center pt-4 space-x-1">
+     <div className="bg-[#B3C8CF] rounded-lg p-4">
+     <div className="flex items-center pt-4 space-x-1 ">
         <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
         <p className="px-3 text-sm text-gray-100 dark:text-[#E5DDC5]">
           Login with social accounts
         </p>
         <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
       </div>
-      <div className="flex justify-center space-x-4">
+      <div className="flex justify-center space-x-4 p-4 rounded-lg">
         <button onClick={handleGoogleRegister} aria-label="Log in with Google" className="p-3 rounded-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -162,12 +163,13 @@ const handleGithubRegister=()=>{
         <button
           rel="noopener noreferrer"
           
-          className="underline text-gray-100 dark:text-[#E5DDC5]"
+          className="underline text-purple-400 dark:text-[#E5DDC5]"
         >
            Register Now 
         </button>
         </Link>
       </p>
+     </div>
     </div>
   );
 };

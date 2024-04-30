@@ -60,16 +60,16 @@ const Home = () => {
           </h1>
         </div>
       </div>
-      <div className="mt-10 ">
+      <div className="mt-15 ">
       <CraftItems craftedData={craftedData}></CraftItems>
       </div>
-      <div className="mt-10 mb-10">
+      <div className="mt-15 mb-10">
         <ArtAndCraftCategories></ArtAndCraftCategories>
       </div>
-      <div className="mt-10 mb-10">
+      <div className="mt-15 mb-10">
         <MeetOurTeam></MeetOurTeam>
       </div>
-      <div className="mt-10 mb-10">
+      <div className="mt-15 mb-10">
         <OurBigDeal ></OurBigDeal>
       </div>
     </div>

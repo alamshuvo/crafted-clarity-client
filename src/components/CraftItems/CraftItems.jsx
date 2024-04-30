@@ -7,15 +7,15 @@ const CraftItems = ({ craftedData }) => {
       <h1 className="text-center font-bold md:text-3xl  text-xl">
         Craft Items
       </h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mb-5 md:w-[90%] mx-auto p-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mb-5 md:w-[90%] w-full mx-auto md:p-5 mt-10 p-4">
         {
             craftedData.slice(0,6).map(craft=><div key={craft._id} className="card card-compact w-full bg-[#F1EEDC] p-5  shadow-xl">
-            <figure><img src={craft.photo} alt={craft.name} className="h-[400px]" /></figure>
-            <div className="card-body">
+            <figure><img src={craft.photo} alt={craft.name} className="h-[400px] rounded-lg" /></figure>
+            <div className="space-y-5">
               <h2 className="card-title">{craft.item}</h2>
               <p>{craft.description}</p>
-              <div className="flex justify-between">
-                <div> stockStatus :{craft.stockStatus}</div>
+              <div className="flex md:flex-col justify-between">
+                <div> <p>stockStatus :{craft.stockStatus}</p></div>
                 <div> price :{craft.price}</div>
               </div>
               <div className="card-actions mt-2">
