@@ -26,7 +26,7 @@ const Home = () => {
         <title>crafted-clarity | Home</title>
       </Helmet>
       <div className="w-[100%] flex gap-10 flex-col md:flex-row ">
-        <div className="md:w-[70%]">
+        <div className="md:w-[70%] w-full">
           <Slider></Slider>
         </div>
         <div className="md:w-[30%] p-5 md:p-10">

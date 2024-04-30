@@ -64,7 +64,8 @@ const Footer = () => {
                </li>
                <li>
               <a>
-                  iftakharalamshuvo@gmail.com
+               <small>iftakharalamshuvo
+                @gmail.com</small>
                 </a>
                </li>
               <li>

@@ -12,20 +12,37 @@ const Slider = () => {
     <Swiper
       autoplay={{ delay: 4000 }}
       slidesPerView={2}
+      breakpoints={{
+        '@0.00': {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        '@0.75': {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        '@1.00': {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+       
+      }}
       // slidesPerView={1}
       spaceBetween={30}
       freeMode={true}
       pagination={{
         clickable: true,
       }}
+      
       modules={[FreeMode, Pagination, Autoplay, Navigation]}
       loop={true}
       className="mySwiper"
+      
     >
       <div className="md:min-h-screen min-h-[400px] ">
         <SwiperSlide>
           <div className="slide slide1   flex justify-center items-center flex-col space-y-5">
-            <p className="text-[#F1EEDC]  text-center">
+            <p className="text-red-400  text-center">
               Wooden furniture and sculptures offer timeless elegance and
               natural beauty.
             </p>
@@ -33,7 +50,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide slide2 flex justify-center items-center flex-col space-y-5">
-            <p className="text-[#F1EEDC]  text-center">
+            <p className="text-red-400  text-center">
               Wooden home decor enhances ambiance with rustic charm and natural
               elements.
             </p>
@@ -41,7 +58,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide slide3 flex justify-center items-center flex-col space-y-5">
-            <p className="text-[#F1EEDC]  text-center">
+            <p className="text-red-400  text-center">
               Wooden utensils and kitchenware offer durability, style, and
               eco-friendliness.
             </p>
@@ -49,7 +66,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide slide4 flex justify-center items-center flex-col space-y-5">
-            <p className="text-[#F1EEDC]  text-center">
+            <p className="text-red-400  text-center">
               Jute home decor infuses spaces with organic texture and earthy
               elegance.
             </p>
@@ -57,7 +74,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide slide5 flex justify-center items-center flex-col space-y-5">
-            <p className="text-[#F1EEDC]  text-center">
+            <p className="text-red-400  text-center">
               Jute kitchenware and utensils combine sustainability with stylish
               functionality beautifully.
             </p>
@@ -65,13 +82,14 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide slide6 flex justify-center items-center flex-col space-y-5">
-            <p className="text-[#F1EEDC]  text-center">
+            <p className="text-red-400  text-center">
               Jute and wooden jewelry exude earthy charm and eco-friendly
               elegance.
             </p>
           </div>
         </SwiperSlide>
       </div>
+      
     </Swiper>
   );
 };
