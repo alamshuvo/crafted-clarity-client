@@ -13,7 +13,7 @@ const NotFound = () => {
           <img src={"https://i.ibb.co/6sZ8qBJ/3804918.jpg"} alt="" />
 
           <p className="text-2xl font-semibold md:text-3xl">
-            Sorry, we couldn't find this page.
+            Sorry, we couldnt find this page.
           </p>
           <p className="mt-4 mb-8 dark:text-gray-600">
             But dont worry, you can find plenty of other things on our homepage.
